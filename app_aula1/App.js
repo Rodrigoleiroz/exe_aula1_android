@@ -1,63 +1,57 @@
 import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, ScrollView } from 'react-native';
 
-import React, {useState} from 'react';
-
 export default function App() {
-
-  const [matricula, setMatricula] = useState(0)
-  const [nome, setNome] = useState(" ")
-  
-  const matInteiro = () => {
-    setMatricula(parseInt(matricula))
-  }
+  const [matricula, setMatricula] = useState('');
+  const [nome, setNome] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [numero, setNumero] = useState('');
 
   return (
     <View style={styles.container}>
+      <Text style={styles.display}>Six eyes</Text>
+      <Text style={styles.display1}>ENTRADA DE DADOS - TextInput</Text>
 
-      <Text style = {styles.display}>Six eyes</Text>
-
-      <Text style = {styles.display1}>ENTRADA DE DADOS - TextInput</Text>
-
-      <Text style = {styles.display2}>Matrícula </Text>
+      <Text style={styles.display2}>Matrícula </Text>
       <TextInput
-        style = {styles.matricula}
-        value = {String(matricula)}
-        onChangeText = {(texto) => (setMatricula(texto))}>
-      </TextInput>
-
-      <Text style = {styles.display3}>Nome</Text>
-      <TextInput
-        style = {styles.nome}
-        value = {String(nome)}
-        onChangeText = {(texto) => (setNome(texto))}>
-
-      <Text style = {styles.display4}>Endereco</Text>
-      <TextInput
-        style = {styles.endereco}
-        value = {String(endereco)}
-        onChangeText = {(texto) => (setEndereco(texto))}>
-      </TextInput>
-
-      <Text style = {styles.display5}>Numero </Text>
-      <TextInput
-        style = {styles.numero}
-        value = {String(numero)}
-        onChangeText = {(texto) => (setNumero(texto))}>
-      </TextInput>
-
-      <Image style = {styles.imagem}
-        resizeMode = 'stretch'
-        source = {require('./images/grunge-eye-3.png')}
+        style={styles.matricula}
+        value={matricula}
+        onChangeText={(texto) => setMatricula(texto)}
       />
 
-      <ScrollView style = {styles.ScrollView} >
-        <Text style={styles.text}>
-          
-        </Text>
+      <Text style={styles.display3}>Nome</Text>
+      <TextInput
+        style={styles.nome}
+        value={nome}
+        onChangeText={(texto) => setNome(texto)}
+      />
+
+      <Text style={styles.display4}>Endereco</Text>
+      <TextInput
+        style={styles.endereco}
+        value={endereco}
+        onChangeText={(texto) => setEndereco(texto)}
+      />
+
+      <Text style={styles.display5}>Numero </Text>
+      <TextInput
+        style={styles.numero}
+        value={numero}
+        onChangeText={(texto) => setNumero(texto)}
+      />
+
+      <Image
+        style={styles.imagem}
+        resizeMode='stretch'
+        source={require('./images/grunge-eye-3.png')}
+      />
+
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.text}></Text>
       </ScrollView>
 
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </View>
   );
 }
@@ -69,7 +63,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
   },
-
   display: {
     margin: 10,
     marginLeft: 20,
@@ -79,35 +72,38 @@ const styles = StyleSheet.create({
   },
   matricula: {
     backgroundColor: '#FFF',
-    borderEndWidth: 1,
+    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
     marginLeft: 10,
     padding: 2,
   },
   nome: {
     backgroundColor: '#FFF',
-    borderEndWidth: 1,
+    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
     marginLeft: 10,
     marginTop: 10,
     padding: 2,
   },
   endereco: {
     backgroundColor: '#FFF',
-    borderEndWidth: 1,
+    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
     marginLeft: 10,
     marginTop: 10,
     padding: 2,
   },
   numero: {
     backgroundColor: '#FFF',
-    borderEndWidth: 1,
+    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
     marginLeft: 10,
     padding: 2,
   },
-
   imagem: {
     width: 170,
     height: 200,
     marginLeft: 90,
     marginTop: 10,
-  }
+  },
+  scrollView: { // Corrected 'ScrollView' to 'scrollView'
+    flex: 1,
+  },
+  text: {},
 });
