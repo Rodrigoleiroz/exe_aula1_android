@@ -1,17 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, ScrollView, Button, Alert } from 'react-native';
+
 
 export default function App() {
   const [matricula, setMatricula] = useState('');
   const [nome, setNome] = useState('');
   const [endereco, setEndereco] = useState('');
   const [numero, setNumero] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cep, setCep] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [uf, setUf] = useState('');
+  const CadastroClick = () => {
+    Alert.alert('Seu cadastro foi realizado com sucesso!');
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.display}>Six eyes</Text>
-      <Text style={styles.display1}>ENTRADA DE DADOS - TextInput</Text>
+      <Text style={styles.display}>Six eyes Cursos</Text>      
+
+      <Image
+        style={styles.imagem}
+        resizeMode='stretch'
+        source={require('./images/grunge-eye-3.png')}
+      />
+
+      <Text style={styles.display1}>Cadastro</Text>
 
       <Text style={styles.display2}>Matrícula </Text>
       <TextInput
@@ -41,10 +56,35 @@ export default function App() {
         onChangeText={(texto) => setNumero(texto)}
       />
 
-      <Image
-        style={styles.imagem}
-        resizeMode='stretch'
-        source={require('./images/grunge-eye-3.png')}
+      <Text style={styles.display6}>Bairro </Text>
+      <TextInput
+        style={styles.bairro}
+        value={bairro}
+        onChangeText={(texto) => setBairro(texto)}
+      />
+
+      <Text style={styles.display7}>Cep </Text>
+      <TextInput
+        style={styles.cep}
+        value={cep}
+        onChangeText={(texto) => setCep(texto)}
+      />
+
+      <Text style={styles.display8}>Cidade </Text>
+      <TextInput
+        style={styles.cidade}
+        value={cidade}
+        onChangeText={(texto) => setCidade(texto)}
+      />
+
+      <Text style={styles.display9}>Uf </Text>
+      <TextInput
+        style={styles.uf}
+        value={uf}
+        onChangeText={(texto) => setUf(texto)}
+      />
+
+      <Button title="Cadastrar" onPress={CadastroClick} 
       />
 
       <ScrollView style={styles.scrollView}>
@@ -65,44 +105,89 @@ const styles = StyleSheet.create({
   },
   display: {
     margin: 10,
-    marginLeft: 20,
+    marginLeft: 10,
+    fontSize: 33,
   },
   display1: {
-    marginLeft: 60,
+    marginLeft: 170,
+    fontSize: 20,
   },
   matricula: {
+    marginTop: 1,
+    width: 70,
+    height: 20,
     backgroundColor: '#FFF',
-    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
+    borderWidth: 1,
     marginLeft: 10,
     padding: 2,
   },
   nome: {
     backgroundColor: '#FFF',
-    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
+    borderWidth: 1,
+    width: 300,
+    height: 20,
     marginLeft: 10,
     marginTop: 10,
     padding: 2,
   },
   endereco: {
     backgroundColor: '#FFF',
-    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
+    borderWidth: 1,
+    width: 300,
+    height: 20,
     marginLeft: 10,
     marginTop: 10,
     padding: 2,
   },
   numero: {
     backgroundColor: '#FFF',
-    borderWidth: 1, // Changed 'borderEndWidth' to 'borderWidth'
+    borderWidth: 1,
+    width: 50,
+    height: 20,
     marginLeft: 10,
     padding: 2,
   },
-  imagem: {
-    width: 170,
-    height: 200,
-    marginLeft: 90,
-    marginTop: 10,
+  bairro: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    width: 100,
+    height: 20,
+    marginLeft: 10,
+    padding: 2,
   },
-  scrollView: { // Corrected 'ScrollView' to 'scrollView'
+  cep: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    width: 100,
+    height: 20,
+    marginLeft: 10,
+    padding: 2,
+  },
+  cidade: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    width: 150,
+    height: 20,
+    marginLeft: 10,
+    padding: 2,
+  },
+  uf: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    width: 50,
+    height: 20,
+    marginLeft: 10,
+    padding: 2,
+    marginBottom: 20,
+  },
+  imagem: {
+    width: 280,
+    height: 200,
+    marginLeft: 60,
+    marginTop: 10,
+    marginBottom: 10,    
+  },
+  scrollView: {
     flex: 1,
   },
   text: {},
