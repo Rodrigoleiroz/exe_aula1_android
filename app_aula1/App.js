@@ -1,24 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, ScrollView, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, ScrollView, Button } from 'react-native';
 
 
 export default function App() {
   const [matricula, setMatricula] = useState('');
+  const matInteiro = () => {
+    setMatricula(parseInt(matricula))
+  }
   const [nome, setNome] = useState('');
+  const [cep, setCep] = useState('');
   const [endereco, setEndereco] = useState('');
   const [numero, setNumero] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [cep, setCep] = useState('');
+  const [bairro, setBairro] = useState('');  
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
-  const CadastroClick = () => {
-    Alert.alert('Seu cadastro foi realizado com sucesso!');
+
+  const showAlert = () => {
+    window.alert('Seu cadastro foi realizado com sucesso!');    
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.display}>Six eyes Cursos</Text>      
+      <Text style={styles.display}>Cursos Online Six Eyes</Text>      
 
       <Image
         style={styles.imagem}
@@ -26,13 +30,14 @@ export default function App() {
         source={require('./images/grunge-eye-3.png')}
       />
 
-      <Text style={styles.display1}>Cadastro</Text>
+      <Text style={styles.display1}>Cadastramento de Clientes</Text>
 
       <Text style={styles.display2}>Matrícula </Text>
       <TextInput
         style={styles.matricula}
         value={matricula}
         onChangeText={(texto) => setMatricula(texto)}
+        keyboardType="numeric"
       />
 
       <Text style={styles.display3}>Nome</Text>
@@ -41,35 +46,36 @@ export default function App() {
         value={nome}
         onChangeText={(texto) => setNome(texto)}
       />
+      <Text style={styles.display4}>Cep </Text>
+      <TextInput
+        style={styles.cep}
+        value={cep}
+        onChangeText={(texto) => setCep(texto)}
+        keyboardType="numeric"
+      />
 
-      <Text style={styles.display4}>Endereco</Text>
+      <Text style={styles.display5}>Endereco</Text>
       <TextInput
         style={styles.endereco}
         value={endereco}
         onChangeText={(texto) => setEndereco(texto)}
       />
 
-      <Text style={styles.display5}>Numero </Text>
+      <Text style={styles.display6}>Numero </Text>
       <TextInput
         style={styles.numero}
         value={numero}
         onChangeText={(texto) => setNumero(texto)}
+        keyboardType="numeric"
       />
 
-      <Text style={styles.display6}>Bairro </Text>
+      <Text style={styles.display7}>Bairro </Text>
       <TextInput
         style={styles.bairro}
         value={bairro}
         onChangeText={(texto) => setBairro(texto)}
       />
-
-      <Text style={styles.display7}>Cep </Text>
-      <TextInput
-        style={styles.cep}
-        value={cep}
-        onChangeText={(texto) => setCep(texto)}
-      />
-
+      
       <Text style={styles.display8}>Cidade </Text>
       <TextInput
         style={styles.cidade}
@@ -84,7 +90,9 @@ export default function App() {
         onChangeText={(texto) => setUf(texto)}
       />
 
-      <Button title="Cadastrar" onPress={CadastroClick} 
+      <Button
+        title="EXIBIR MENSAGEM"
+        onPress={showAlert}
       />
 
       <ScrollView style={styles.scrollView}>
@@ -105,16 +113,16 @@ const styles = StyleSheet.create({
   },
   display: {
     margin: 10,
-    marginLeft: 10,
+    marginLeft: 30,
     fontSize: 33,
   },
   display1: {
-    marginLeft: 170,
+    marginLeft: 50,
     fontSize: 20,
   },
   matricula: {
     marginTop: 1,
-    width: 70,
+    width: 100,
     height: 20,
     backgroundColor: '#FFF',
     borderWidth: 1,
@@ -124,16 +132,24 @@ const styles = StyleSheet.create({
   nome: {
     backgroundColor: '#FFF',
     borderWidth: 1,
-    width: 300,
+    width: 350,
     height: 20,
     marginLeft: 10,
     marginTop: 10,
     padding: 2,
   },
+  cep: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    width: 100,
+    height: 20,
+    marginLeft: 10,
+    padding: 2,
+  },
   endereco: {
     backgroundColor: '#FFF',
     borderWidth: 1,
-    width: 300,
+    width: 350,
     height: 20,
     marginLeft: 10,
     marginTop: 10,
@@ -150,19 +166,12 @@ const styles = StyleSheet.create({
   bairro: {
     backgroundColor: '#FFF',
     borderWidth: 1,
-    width: 100,
+    width: 150,
     height: 20,
     marginLeft: 10,
     padding: 2,
   },
-  cep: {
-    backgroundColor: '#FFF',
-    borderWidth: 1,
-    width: 100,
-    height: 20,
-    marginLeft: 10,
-    padding: 2,
-  },
+  
   cidade: {
     backgroundColor: '#FFF',
     borderWidth: 1,
@@ -183,7 +192,7 @@ const styles = StyleSheet.create({
   imagem: {
     width: 280,
     height: 200,
-    marginLeft: 60,
+    marginLeft: 40,
     marginTop: 10,
     marginBottom: 10,    
   },
